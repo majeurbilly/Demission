@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lettre de démission — Billy Hallé</title>
+  <meta name="description" content="Lettre de démission — Billy Hallé">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/letter.css">
+</head>
+<body>
+  <div class="toolbar no-print">
+    <div class="date-controls">
+      <label>
+        Date de la lettre
+        <input id="letter-date-input" type="date" required>
+      </label>
+      <label>
+        Date de départ
+        <input id="depart-date-input" type="date" required>
+      </label>
+    </div>
+    <button type="button" class="print-btn" id="print-btn" aria-label="Imprimer la lettre">
+      Imprimer
+    </button>
+  </div>
+
+  <article class="letter" aria-label="Lettre de démission">
+    <header class="sender">
+      <p class="name">Billy Hallé</p>
+      <p>Duberger, Québec</p>
+      <p>billy.halle@stringempty.dev</p>
+    </header>
+
+    <p class="place-date">
+      Québec, le <span id="letter-date-text" class="date-text is-empty" data-empty="……………"></span>
+    </p>
+
+    <address class="recipient">
+      <p class="name">Schivo Medical – APN Global</p>
+      <p>Ressources humaines</p>
+      <p>Québec</p>
+    </address>
+
+    <p class="subject"><span class="subject-label">Objet</span> Lettre de démission</p>
+
+    <p class="salutation">Madame, Monsieur,</p>
+
+    <p>
+      Par la présente, je vous informe de ma décision de démissionner de mon poste
+      de commis à la finition au sein de Schivo Medical – APN Global, et ce,
+      à compter du <span id="depart-date-text" class="date-text is-empty" data-empty="……………"></span>.
+    </p>
+
+    <p>
+      Je m’engage à collaborer pleinement durant la période de transition afin
+      d’assurer une relève efficace de mes responsabilités.
+    </p>
+
+    <p>
+      Je vous remercie pour l’opportunité qui m’a été offerte et vous prie
+      d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées.
+    </p>
+
+    <footer class="signature">
+      <p class="sign-hint no-print">Espace pour signature manuscrite</p>
+      <p class="sign-space" aria-hidden="true"></p>
+      <p class="name">Billy Hallé</p>
+    </footer>
+  </article>
+
+  <script src="assets/letter.js"></script>
+</body>
+</html>

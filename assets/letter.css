@@ -1,0 +1,275 @@
+:root {
+  --ink: #161616;
+  --muted: #6b665c;
+  --paper: #efebe3;
+  --sheet: #fffcf7;
+  --accent: #243d34;
+  --accent-soft: #dfe8e3;
+  --rule: #cfc8bb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 17px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 500px at 50% -10%, #f7f3ea 0%, transparent 70%),
+    linear-gradient(180deg, #e8e2d6 0%, var(--paper) 40%, #e4ddd2 100%);
+  font-family: "Libre Baskerville", "Palatino Linotype", Palatino, Georgia, serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.25rem 1.1rem;
+  background: rgba(239, 235, 227, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.date-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.25rem;
+}
+
+.date-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.date-controls input[type="date"] {
+  min-width: 11.5rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: #fff;
+  color: var(--ink);
+  font: 0.95rem/1.2 Georgia, "Times New Roman", serif;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.date-controls input[type="date"]:focus {
+  outline: 2px solid var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.print-btn {
+  appearance: none;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  padding: 0.72rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.print-btn:hover {
+  background: #182b24;
+}
+
+.print-btn:active {
+  transform: translateY(1px);
+}
+
+.print-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.letter {
+  width: min(8.5in, calc(100% - 2rem));
+  min-height: 11in;
+  margin: 1.25rem auto 2.5rem;
+  padding: 0.95in 1in 1.1in;
+  background: var(--sheet);
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.04),
+    0 22px 50px rgba(50, 40, 20, 0.14);
+}
+
+.sender,
+.recipient,
+.signature {
+  font-style: normal;
+}
+
+.sender p,
+.recipient p,
+.signature p {
+  margin: 0;
+}
+
+.name {
+  font-weight: 700;
+}
+
+.sender {
+  margin-bottom: 2.4rem;
+}
+
+.place-date {
+  text-align: right;
+  margin: 0 0 2.4rem;
+}
+
+.recipient {
+  margin-bottom: 2.1rem;
+}
+
+.subject {
+  margin: 0 0 1.9rem;
+}
+
+.subject-label {
+  display: inline-block;
+  min-width: 3.4rem;
+  font-weight: 700;
+}
+
+.subject-label::after {
+  content: " :";
+}
+
+.salutation {
+  margin: 0 0 1.35rem;
+}
+
+.letter > p {
+  margin: 0 0 1.2rem;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+.date-text {
+  white-space: nowrap;
+  font-weight: 700;
+  border-bottom: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.date-text.is-empty {
+  color: var(--muted);
+  font-weight: 400;
+  border-bottom: 1px solid var(--ink);
+  padding: 0 0.15em 0.05em;
+  min-width: 9rem;
+  display: inline-block;
+  text-align: center;
+}
+
+.date-text.is-empty::before {
+  content: attr(data-empty);
+}
+
+.date-text.is-empty:not(:empty)::before {
+  content: none;
+}
+
+.signature {
+  margin-top: 2.6rem;
+}
+
+.sign-hint {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.sign-space {
+  height: 3.75rem;
+}
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.75in;
+  }
+
+  html {
+    font-size: 12.5pt;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .letter {
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    background: #fff;
+  }
+
+  .letter > p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .date-text {
+    font-weight: 700;
+    color: #000;
+    border: none;
+    min-width: 0;
+    padding: 0;
+    display: inline;
+  }
+
+  .date-text.is-empty {
+    border-bottom: 1px solid #000;
+    min-width: 8rem;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .toolbar {
+    align-items: stretch;
+  }
+
+  .print-btn {
+    width: 100%;
+  }
+
+  .letter {
+    padding: 1.4rem 1.15rem 2rem;
+    min-height: auto;
+  }
+}
